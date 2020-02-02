@@ -9,7 +9,7 @@ function makeBingoTable( elements ) {
     tableHTML += '<tr>';
     for ( let col = 0; col < 5; col++ ) {
       tableHTML += '<td>'
-      let elementForTableData = elements[ row * col ];
+      let elementForTableData = elements.pop();
 
       if ( row === 2 && col === 2 ) {
         elementForTableData = FREE_SPACE;
