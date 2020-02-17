@@ -1,6 +1,13 @@
 const NUMBER_OF_SHEETS = 10;
 
 const FREE_SPACE = 'Free Space';
+const STORAGE_KEY = 'bingoWasHisNameO'
+const bingoItemsInput = document.getElementById( 'bingoItems' );
+
+
+window.addEventListener( 'load', () => {
+  bingoItemsInput.value = window.localStorage.getItem( STORAGE_KEY );
+} );
 
 function makeBingoTable( elements ) {
 
@@ -35,7 +42,12 @@ ${makeBingoTable( elements )}
 
 document.getElementById( 'create' ).addEventListener( 'click', () => {
 
-  const elements = document.getElementById( 'bingoItems' ).value.split( /[\n,]/ );
+  const rawInput = bingoItemsInput.value;
+
+  // save in localStorage
+  window.localStorage.setItem( STORAGE_KEY, rawInput );
+
+  const elements = rawInput.split( /[\n,]/ );
   console.log( elements );
 
   if ( elements.length < 24 ) {
